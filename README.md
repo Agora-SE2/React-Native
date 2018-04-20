@@ -1,3 +1,5 @@
 # React-Native-Presentation
-Descargar Expo en el celular (Android o iOS)
-https://repl.it/repls/ImaginativePreciousRecords
+
+1. Descargar Expo en el celular (Android o iOS)
+
+2.https://repl.it/repls/ImaginativePreciousRecords

@@ -249,6 +249,7 @@ Lo primero que haremos es añadir los estilos que utilizaran los subcontenedores
 Al final de nuestro _App.js_:
 
 ```javascript
+...
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -264,11 +265,13 @@ const styles = StyleSheet.create({
     padding: 40
   },
 });
+...
 ```
 
 Ahora, dentro del _render()_ pondremos los botones dentro de un flex en modo fila (row) (flex es lo que nos ayuda a organizar la posición de los elementos dentro de React Native). Dentro de cada botón ponemos el llamado a su respectiva función, también el color (que lo seleccionamos del arreglo de colores ya creado) y un título cualquiera.
 
 ```javascript
+...
 render() {
     return (
       <ScrollView>
@@ -303,4 +306,77 @@ render() {
     );
   }
 }
+...
 ```
+
+________________________________________
+
+Hasta este momento nuestro archivo _App.js_ debería verse así:
+
+```javascript
+import React, { Component } from 'react';
+import { Text, View, ScrollView, StyleSheet, Button, Image, Modal } from 'react-native';
+import { Constants } from 'expo';
+
+var images = [
+  "https://raw.githubusercontent.com/Agora-SE2/React-Native/master/images/tiburoso1.jpg",
+  "https://raw.githubusercontent.com/Agora-SE2/React-Native/master/images/tiburoso2.jpg",
+  "https://raw.githubusercontent.com/Agora-SE2/React-Native/master/images/tiburoso3.jpg"
+];
+
+render() {
+    return (
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.sectionContainer}>
+            <Text>{this.state.title}</Text>
+          </View>
+          <View style={{flex: 1, flexDirection: 'row'}}>
+            <View style={styles.sectionContainer}>
+                <Button
+                  onPress={this.goBack.bind(this)}
+                  title="Go back :/"
+                  color={colors[0]}
+                />
+            </View>
+            <View style={styles.sectionContainer}>
+              <Button
+                onPress={this.upgrade.bind(this)}
+                title="Upgrade! :D"
+                color={colors[1]}
+              />
+            </View>
+        </View>
+        
+        <Image source={{uri: images[this.state.image]}}
+          style={styles.image} 
+        />
+
+       </View>
+      </ScrollView>
+      
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+  },
+  image: {
+    width: 400, 
+    height: 400
+  },
+  sectionContainer:{
+    padding: 40
+  },
+});
+```
+
+________________________________________
+
+
+

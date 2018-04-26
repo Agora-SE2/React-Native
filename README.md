@@ -50,6 +50,45 @@ const styles = StyleSheet.create({
 });
 ```
 
-### 4. 
+### 4. Estado de la aplicación
+
+La funcionalidad de la aplicación se hará a través del estado de la misma (status funciona exactamente igual que en ReactJS).
+Tendremos dos propiedades en el estado de la aplicación: 
+
+1. Imagen: (0, 1, 2). Es un entero entre 0 y 2 que se utilizará para saber cual de las imágenes de nuestro arreglo de imágenes es la que se debe mostrar.
+
+2. Título: (string). Es la cadena de texto que se mostrará en la cabecera de la aplicación.
+  
+```javascript
+...
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: 0,
+      title: "Tiburoso: 100% real, 1000% letal"
+    };
+  }
+}
+...
+```
+  
+```javascript
+import React, { Component } from 'react';
+import { Text, View, ScrollView, StyleSheet, Button, Image, Modal } from 'react-native';
+import { Constants } from 'expo';
+
+var images = [
+  "https://raw.githubusercontent.com/Agora-SE2/React-Native/master/images/tiburoso1.jpg",
+  "https://raw.githubusercontent.com/Agora-SE2/React-Native/master/images/tiburoso2.jpg",
+  "https://raw.githubusercontent.com/Agora-SE2/React-Native/master/images/tiburoso3.jpg"
+];
+
+export default class App extends Component {
+}
+
+const styles = StyleSheet.create({
+});
+```
 
 

@@ -30,7 +30,7 @@ Nuestra aplicación va a cambiar una imagen por medio de interacciones con boton
 
 Para esto vamos a guardar los enlaces de las imágenes que vamos a utilizar en un arreglo, van a quedar justo debajo de los import.
 
-Nuestro archivo App.js debería quedar así:
+Nuestro archivo _App.js_ debería quedar así:
 
 ```javascript
 import React, { Component } from 'react';
@@ -57,7 +57,7 @@ Tendremos dos propiedades en el estado de la aplicación:
 
 1. Imagen: (0, 1, 2). Es un entero entre 0 y 2 que se utilizará para saber cual de las imágenes de nuestro arreglo de imágenes es la que se debe mostrar.
 
-2. Título: (string). Es la cadena de texto que se mostrará en la cabecera de la aplicación.
+2. Título: (_string_). Es la cadena de texto que se mostrará en la cabecera de la aplicación.
   
 ```javascript
 ...
@@ -106,7 +106,7 @@ export default class App extends Component {
 Al no ser HTML, la posibilidad de utilizar CSS deja de existir. 
 Sin embargo, React Native tiene su propia StyleSheet y funciona muy parecido a como lo hace CSS.
 
-Al final del App.js vamos a definir un arreglo con colores y la hoja de estilos.
+Al final del _App.js_ vamos a definir un arreglo con colores y la hoja de estilos.
   
 ```javascript
 ...
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
 
 ________________________________________
 
-Hasta este momento nuestro archivo App.js debería verse así:
+Hasta este momento nuestro archivo _App.js_ debería verse así:
 
 ```javascript
 import React, { Component } from 'react';
@@ -162,6 +162,77 @@ var colors = [
 const styles = StyleSheet.create({
 });
 ```
+________________________________________
 
+### 7. ¿Y el contenido?
+
+Añadamos el _render()_ a nuestra clase para, por fin, poder ver algo en pantalla.
+
+```javascript
+...
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: 0,
+      title: "Tiburoso: 100% real, 1000% letal"
+    };
+  }
+  
+  goBack() {
+    if(this.state.image > 0){
+      this.setState({image: this.state.image - 1});
+    }
+  }
+  
+  upgrade() {
+    if(this.state.image < 2){
+      this.setState({image: this.state.image + 1});
+    }
+  }
+  
+  render() {
+    return ();
+  }
+}
+```
+
+Aunque nos podemos ir olvidando de retornar un div, React Native utiliza un sistema de etiquetas muy parecido a HTML.
+  
+Por ejemplo, en vez de **div** tenemos **View**, en vez de **p** tenemos **Text** y así. Toda la información está disponible en la página oficial: https://facebook.github.io/react-native/docs/tutorial.html 
+
+Para poder hacer scroll utilizaremos la etiqueta **ScrollView**, dentro de ella tendremos una etiqueta **View** a la que le añadiremos todo el contenido de la aplicación y la asociaremos con los estilos del container.
+
+Así quedará nuestro render:
+
+```javascript
+...
+render() {
+    return (
+      <ScrollView>
+        <View style={styles.container}>
+      
+        </View>
+      </ScrollView>
+      
+    );
+  }
+...
+```
+
+Y así quedará nuestra hoja de estilos:
+
+```javascript
+...
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+  }
+});
+...
+```
 
 

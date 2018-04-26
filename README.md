@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
 ...
 ```
 
-Ahora, dentro del _render()_ pondremos los botones dentro de un flex en modo fila (row) (flex es lo que nos ayuda a organizar la posición de los elementos dentro de React Native). Dentro de cada botón ponemos el llamado a su respectiva función, también el color (que lo seleccionamos del arreglo de colores ya creado) y un título cualquiera.
+Ahora, dentro del _render()_ pondremos el título y los botones dentro de un flex en modo fila (row) (flex es lo que nos ayuda a organizar la posición de los elementos dentro de React Native). Dentro de cada botón ponemos el llamado a su respectiva función, también el color (que lo seleccionamos del arreglo de colores ya creado) y un título cualquiera.
 
 ```javascript
 ...
@@ -378,5 +378,82 @@ const styles = StyleSheet.create({
 
 ________________________________________
 
+### 9. Entrada de texto
 
+Para cambiar el título utilizaremos una entrada de texto que pondremos al final de la aplicación.
 
+Utilizaremos la etiqueta **TextInput**. Pondremos un handler para que cuando se cambie el texto también se cambie el estado del título de la aplicación, además asignaremos el título actual como texto por defecto.
+
+Así quedaría nuestro _render()_:
+
+```javascript
+...
+  render() {
+    return (
+      <ScrollView>
+      
+      <View style={styles.container}>
+      <View style={styles.sectionContainer}>
+        <Text>{this.state.title}</Text>
+      </View>
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <View style={styles.sectionContainer}>
+           <Button
+              onPress={this.goBack.bind(this)}
+              title="Go back :/"
+              color={colors[0]}
+            />
+          </View>
+          <View style={styles.sectionContainer}>
+            <Button
+              onPress={this.upgrade.bind(this)}
+              title="Upgrade! :D"
+              color={colors[1]}
+            />
+            </View>
+        </View>
+        
+        <Image source={{uri: images[this.state.image]}}
+          style={styles.image} 
+        />
+        <View style={styles.sectionContainer}>
+          <TextInput
+            style={styles.inputText}
+            onChangeText={(text) => this.setState({title: text})}
+            value={this.state.title}
+          />
+        </View>
+       </View>
+      </ScrollView>
+    );
+  }
+}
+...
+```
+Ahora añadamos algunos estilos a nuestra entrada de texto.
+
+```javascript
+...
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+  },
+  image: {
+    width: 400, 
+    height: 400
+  },
+  sectionContainer:{
+    padding: 40
+  },
+  inputText:{
+    height: 40,
+    borderColor: colors[1],
+    borderWidth: 3,
+    width: 200
+  }
+});
+...
+```

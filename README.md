@@ -8,16 +8,20 @@ Una vez dentro del snack borramos el contenido del archivo App.js
 
 ### 2. Iniciar un proyeto vacío
 
-Vamos a importar los elementos que necesitamos desde React Native, así mismo vamos a crear una clase que, por el momento, permanecerá vacía.
+Vamos a importar los elementos que necesitamos desde React Native y de Expo, así mismo vamos a crear una clase que, por el momento, permanecerá vacía y una hoja de estilos al final del archivo.
 
 Nuestro archivo App.js debería quedar así:
 
 ```javascript
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StyleSheet, Button, Image, Modal } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, Button, Image, TextInput } from 'react-native';
+import { Constants } from 'expo';
 
 export default class App extends Component {
 }
+
+const styles = StyleSheet.create({
+});
 ```
 
 ### 3. ¿De qué se trata nuestra aplicación?
@@ -31,6 +35,7 @@ Nuestro archivo App.js debería quedar así:
 ```javascript
 import React, { Component } from 'react';
 import { Text, View, ScrollView, StyleSheet, Button, Image, Modal } from 'react-native';
+import { Constants } from 'expo';
 
 var images = [
   "https://raw.githubusercontent.com/Agora-SE2/React-Native/master/images/tiburoso1.jpg",
@@ -40,6 +45,11 @@ var images = [
 
 export default class App extends Component {
 }
+
+const styles = StyleSheet.create({
+});
 ```
+
+### 4. 
 
 

@@ -211,7 +211,9 @@ render() {
     return (
       <ScrollView>
         <View style={styles.container}>
-      
+          <Image source={{uri: images[this.state.image]}}
+            style={styles.image} 
+          />
         </View>
       </ScrollView>
       
@@ -234,5 +236,6 @@ const styles = StyleSheet.create({
 });
 ...
 ```
+
 
 

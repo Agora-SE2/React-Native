@@ -72,7 +72,57 @@ export default class App extends Component {
 }
 ...
 ```
+
+### 5. Funciones para actualizar la imagen
+
+Vamos a crear las funciones que se llamarán desde los botones, ambas funciones serán muy sencillas y tendrán un if para evitar que se seleccione un índice que no existe.
+
+```javascript
+...
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: 0,
+      title: "Tiburoso: 100% real, 1000% letal"
+    };
+  }
+  goBack() {
+    if(this.state.image > 0){
+      this.setState({image: this.state.image - 1});
+    }
+  }
+  upgrade() {
+    if(this.state.image < 2){
+      this.setState({image: this.state.image + 1});
+    }
+  }
+}
+...
+```
+
+### 6. Containers y estilos
+
+Al no ser HTML, la posibilidad de utilizar CSS deja de existir. 
+Sin embargo, React Native tiene su propia StyleSheet y funciona muy parecido a como lo hace CSS.
+
+Al final del App.js vamos a definir un arreglo con colores y la hoja de estilos.
   
+```javascript
+...
+var colors = [
+  "darkorange",
+  "deepskyblue",
+];
+
+const styles = StyleSheet.create({
+});
+```
+
+________________________________________
+
+Hasta este momento nuestro archivo App.js debería verse así:
+
 ```javascript
 import React, { Component } from 'react';
 import { Text, View, ScrollView, StyleSheet, Button, Image, Modal } from 'react-native';
@@ -85,10 +135,33 @@ var images = [
 ];
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: 0,
+      title: "Tiburoso: 100% real, 1000% letal"
+    };
+  }
+  goBack() {
+    if(this.state.image > 0){
+      this.setState({image: this.state.image - 1});
+    }
+  }
+  upgrade() {
+    if(this.state.image < 2){
+      this.setState({image: this.state.image + 1});
+    }
+  }
 }
+
+var colors = [
+  "darkorange",
+  "deepskyblue",
+];
 
 const styles = StyleSheet.create({
 });
 ```
+
 
 

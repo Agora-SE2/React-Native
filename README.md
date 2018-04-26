@@ -203,7 +203,7 @@ Por ejemplo, en vez de **div** tenemos **View**, en vez de **p** tenemos **Text*
 
 Para poder hacer scroll utilizaremos la etiqueta **ScrollView**, dentro de ella tendremos una etiqueta **View** a la que le añadiremos todo el contenido de la aplicación y la asociaremos con los estilos del container.
 
-Así quedará nuestro render:
+Así quedará nuestro render, dentro del class en nuestro _App.js_:
 
 ```javascript
 ...
@@ -222,7 +222,7 @@ render() {
 ...
 ```
 
-Y así quedará nuestra hoja de estilos:
+Y así quedará nuestra hoja de estilos, al final de nuestro _App.js_:
 
 ```javascript
 ...
@@ -232,10 +232,75 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
+  },
+  image: {
+    width: 400, 
+    height: 400
   }
 });
 ...
 ```
 
+### 8. Botones y llamado a funciones
 
+¡Hagamos nuestra aplicación interactiva!
 
+Lo primero que haremos es añadir los estilos que utilizaran los subcontenedores, para que los elementos queden separados y ordenados.
+Al final de nuestro _App.js_:
+
+```javascript
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+  },
+  image: {
+    width: 400, 
+    height: 400
+  },
+  sectionContainer:{
+    padding: 40
+  },
+});
+```
+
+Ahora, dentro del _render()_ pondremos los botones dentro de un flex en modo fila (row) (flex es lo que nos ayuda a organizar la posición de los elementos dentro de React Native). Dentro de cada botón ponemos el llamado a su respectiva función, también el color (que lo seleccionamos del arreglo de colores ya creado) y un título cualquiera.
+
+```javascript
+render() {
+    return (
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.sectionContainer}>
+            <Text>{this.state.title}</Text>
+          </View>
+          <View style={{flex: 1, flexDirection: 'row'}}>
+            <View style={styles.sectionContainer}>
+                <Button
+                  onPress={this.goBack.bind(this)}
+                  title="Go back :/"
+                  color={colors[0]}
+                />
+            </View>
+            <View style={styles.sectionContainer}>
+              <Button
+                onPress={this.upgrade.bind(this)}
+                title="Upgrade! :D"
+                color={colors[1]}
+              />
+            </View>
+        </View>
+        
+        <Image source={{uri: images[this.state.image]}}
+          style={styles.image} 
+        />
+
+       </View>
+      </ScrollView>
+      
+    );
+  }
+}
+```
